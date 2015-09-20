@@ -7,27 +7,34 @@ Labyrinth::Labyrinth(const int& width, const int& height, const std::vector<std:
     for (int i = 0; i < width; ++i) {
         for (int j = 0; j < height; ++j) {
             _data.set(i, j, map[i][j]);
+            if (map[i][j] == 'E') {
+                _start = Point<unsigned int>(i, j);
+            }
         }
     }
 }
 
-bool Labyringht::isCheese(const unsigned int& x, const unsigned int& y) const {
-    return _data.get(x, y) == 'Q';
+bool Labyrinth::isCheese(const Point<unsigned int>& point) const {
+    return _data.get(point) == 'Q';
 }
 
-bool Labyringht::isEntrance(const unsigned int& x, const unsigned int& y) const {
-    return _data.get(x, y) == 'E';
+bool Labyrinth::isEntrance(const Point<unsigned int>& point) const {
+    return _data.get(point) == 'E';
 }
 
-bool Labyringht::isExit(const unsigned int& x, const unsigned int& y) const {
-    return _data.get(x, y) == 'S';
+bool Labyrinth::isExit(const Point<unsigned int>& point) const {
+    return _data.get(point) == 'S';
 }
 
-bool Labyringht::isWall(const unsigned int& x, const unsigned int& y) const {
-    return _data.get(x, y) == '1';
+bool Labyrinth::isWall(const Point<unsigned int>& point) const {
+    return _data.get(point) == '1';
 }
 
-bool Labyringht::isPath(const unsigned int& x, const unsigned int& y) const {
-    return _data.get(x, y) == '0';
+bool Labyrinth::isPath(const Point<unsigned int>& point) const {
+    return _data.get(point) == '0';
+}
+
+Point<unsigned int> Labyrinth::getStart() const {
+    return _start;
 }
 
