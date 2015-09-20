@@ -3,12 +3,16 @@
 
 #include <string>
 #include <vector>
+#include "matrix.h"
+#include "matrix.impl.h"
 
 class Labyrinth {
 public:
     Labyrinth(const int& width, const int& height, const std::vector<std::string>& map);
+
+    bool isCheese(const unsigned int& x, const unsigned int& y) const;
 private:
-    std::vector<std::vector<char> > _data;
+    Matrix<char> _data;
 };
 
 
