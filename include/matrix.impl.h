@@ -9,6 +9,20 @@ template<typename T> Matrix<T>::Matrix(const unsigned int& rows, const unsigned 
 
 }
 
+template<typename T> bool Matrix<T>::valid( const unsigned int &x, const unsigned int &y ) const {
+    if ((x >= 0 && x < _rows) && (y >= 0 && y < _cols))
+        return true;
+
+    return false;
+}
+
+template<typename T> bool Matrix<T>::valid( const Point<unsigned int> &p ) const {
+    if ((p.getX() >= 0 && p.getX() < _rows) && (p.getY() >= 0 && p.getY() < _cols))
+        return true;
+
+    return false;
+}
+
 template<typename T> T Matrix<T>::get( const unsigned int &x, const unsigned int &y ) const {
     return _data.at(_get2DIdx(x, y));
 }

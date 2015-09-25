@@ -24,5 +24,15 @@ template<typename T> bool Point<T>::operator==( const Point<T> &other ) {
     return getX() == other.getX() && getY() == other.getY();
 }
 
+template<typename T> void Point<T>::addX(const T& x) {
+    _x += x;
+}
+
+template<typename T> void Point<T>::addY(const T& y) {
+    _y += y;
+}
+
+    
+
 
 #endif//POINT_IMPL_H

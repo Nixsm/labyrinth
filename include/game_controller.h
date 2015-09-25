@@ -9,6 +9,9 @@ public:
     GameController() {}
     GameController(const unsigned int& width, const unsigned int& height, const std::vector<std::string>& map);
 
+    bool isExit();
+    void ratMove();
+    void report();
 private:
     Rat _rat;
     Labyrinth _labyrinth;

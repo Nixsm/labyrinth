@@ -31,7 +31,7 @@ void IO::readFile(int &width, int &height, std::vector<std::string> &map){
     };
 
     std::string dummyString;
-    getline(infile, dummyString); // get rid of the first line.
+    std::getline(infile, dummyString); // get rid of the first line.
 
     for (std::string line; getline(infile, line);){
         map.push_back(line);

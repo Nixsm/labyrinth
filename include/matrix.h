@@ -17,6 +17,8 @@ public:
     T get(const unsigned int& x, const unsigned int& y) const;
     T get(const Point<unsigned int>& point) const;
 
+    bool valid(const unsigned int& x, const unsigned int& y) const;
+    bool valid(const Point<unsigned int>& p) const;
     
     friend std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix) {
         for (int i = 0; i < matrix._rows; ++i) {

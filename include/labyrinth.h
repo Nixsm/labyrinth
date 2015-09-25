@@ -14,6 +14,7 @@ public:
     Labyrinth() {}
     Labyrinth(const int& width, const int& height, const std::vector<std::string>& map);
 
+    bool isValid(const Point<unsigned int>& point) const;
     bool isCheese(const Point<unsigned int>& point) const;
     bool isEntrance(const Point<unsigned int>& point) const;
     bool isExit(const Point<unsigned int>& point) const;

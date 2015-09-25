@@ -8,28 +8,43 @@
 #include "point.impl.h"
 
 class Rat {
-    enum Moves {
+public:
+    enum Move {
         LEFT=0,
         RIGHT,
         UP,
         DOWN
     };
-
+private:
     struct Movement {
         Point<unsigned int> pos;
         bool ateCheese;
+
+        bool operator==(const Movement& other) {
+            if (pos == other.pos)
+                return true;
+            return false;           
+        }
     };
 
 
 public:
     Rat() {}
     Rat(const Point<unsigned int>& point);
-
     
+    void move(Move move);
 
+    void moveFoward(const bool& ateCheese);
+    void moveBackwards();
+    
+    Point<unsigned int> getPosition() const;
+    void setPosition(const Point<unsigned int>& p);
 
+    bool beenThere(const Point<unsigned int>& p);
+
+    void report();
 private:
-    void _move(const Point<unsigned int>& point, const bool& ateCheese);
+    void _moveFoward(const Point<unsigned int>& point, const bool& ateCheese);
     void _rewindMove();
     
 private:

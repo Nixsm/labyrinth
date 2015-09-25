@@ -7,11 +7,15 @@ Labyrinth::Labyrinth(const int& width, const int& height, const std::vector<std:
     for (int i = 0; i < width; ++i) {
         for (int j = 0; j < height; ++j) {
             _data.set(i, j, map[i][j]);
-            if (map[i][j] == 'E') {
+            if (_data.get(i, j) == 'E') {
                 _start = Point<unsigned int>(i, j);
             }
         }
     }
+}
+
+bool Labyrinth::isValid(const Point<unsigned int>& point) const {
+    return _data.valid(point);
 }
 
 bool Labyrinth::isCheese(const Point<unsigned int>& point) const {
