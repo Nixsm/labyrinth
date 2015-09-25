@@ -1,5 +1,15 @@
-#include <iostream>
+#ifndef IO_H
+#define IO_H
 
-inline bool fileExists(const std::string &);
+#include <vector>
+#include <string>
+#include <fstream>
 
-void readFile(int &, int &, std::vector<std::string> &);
+class IO {
+public:
+    
+    static void readFile(int &, int &, std::vector<std::string> &);
+private:
+    //inline bool fileExists(const std::ifstream &);
+};
+#endif//IO_H

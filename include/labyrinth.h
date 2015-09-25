@@ -11,6 +11,7 @@
 
 class Labyrinth {
 public:
+    Labyrinth() {}
     Labyrinth(const int& width, const int& height, const std::vector<std::string>& map);
 
     bool isCheese(const Point<unsigned int>& point) const;

@@ -1,24 +1,29 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <sys/stat.h>
-#include "../include/io.h"
+#include "io.h"
 
-inline bool fileExists(const std::string& filename){
-    return (access(filename.c_str(), F_OK) != -1);
-}
+//////////////////////////////////////////////////////////
+// inline bool fileExists(const std::string& filename){ //
+//     return (access(filename.c_str(), F_OK) != -1);   //
+// }                                                    //
+//////////////////////////////////////////////////////////
 
-void readFile(int &width, int &height, std::vector<std::string> &map){
+void IO::readFile(int &width, int &height, std::vector<std::string> &map){
     std::string filename;
-    
-    std::cout << "Filename: ";
-    std::cin >> filename;
+    std::ifstream infile;
 
-    if (!fileExists(filename)){
-        std::cout << "Error, file does not exist.\n";
-        exit(1);
-    }
-    std::ifstream infile(filename);
+    do {
+        std::cout << "Filename: ";
+        std::cin >> filename;
+
+        // if (!fileExists(filename)){
+        //     std::cout << "Error, file does not exist.\n";
+        //     exit(1);
+        // }
+
+        infile.open(filename.c_str());
+
+    } while (!infile.is_open());
 
     // get first line with w/h
     while (infile >> width >> height){
@@ -30,6 +35,5 @@ void readFile(int &width, int &height, std::vector<std::string> &map){
 
     for (std::string line; getline(infile, line);){
         map.push_back(line);
-        std::cout << line;
     }
 }

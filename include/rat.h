@@ -22,6 +22,7 @@ class Rat {
 
 
 public:
+    Rat() {}
     Rat(const Point<unsigned int>& point);
 
     

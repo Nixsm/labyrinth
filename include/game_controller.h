@@ -6,6 +6,7 @@
 
 class GameController {
 public:
+    GameController() {}
     GameController(const unsigned int& width, const unsigned int& height, const std::vector<std::string>& map);
 
 private:

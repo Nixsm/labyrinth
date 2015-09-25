@@ -8,6 +8,7 @@
 
 template<typename T> class Matrix {
 public:
+    Matrix() {}
     Matrix(const unsigned int& rows, const unsigned int& cols);
     
     void set(const unsigned int& x, const unsigned int& y, const T& value);
