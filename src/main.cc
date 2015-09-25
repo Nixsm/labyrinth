@@ -1,12 +1,22 @@
 #include <iostream>
 #include "labyrinth.h"
+#include "io.h"
 
 #include "point.h"
 #include "point.impl.h"
 
 int main(int argc, char** argv){
-    Matrix<char> mat(10, 10);
+    int width = 0;
+    int height = 0;
+    std::vector<std::string> map;
+    
+    readFile(width, height, map);
 
+    // todo
+    //    Labyrinth lab =  Labyrinth(width, height, map);
+    
+    Matrix<char> mat(width, height);
+    
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
             mat.set(i, j, '1');
