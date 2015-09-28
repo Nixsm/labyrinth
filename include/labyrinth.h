@@ -20,7 +20,11 @@ public:
     bool isExit(const Point<unsigned int>& point) const;
     bool isWall(const Point<unsigned int>& point) const;
     bool isPath(const Point<unsigned int>& point) const;
-
+    bool checkRight(const Point<unsigned int> &point) const;
+    bool checkLeft(const Point<unsigned int> &point) const;
+    bool checkUp(const Point<unsigned int> &point) const;
+    bool checkDown(const Point<unsigned int> &point) const;
+    
     Point<unsigned int> getStart() const;
 private:
     Matrix<char> _data;

@@ -4,7 +4,6 @@ GameController::GameController(const unsigned int& width, const unsigned int& he
     :_labyrinth(width, height, map)
 {
     _rat = Rat(_labyrinth.getStart());
-    _rat.moveFoward(false);
 }
 
 bool GameController::isExit() {
@@ -12,27 +11,38 @@ bool GameController::isExit() {
 }
 
 void GameController::ratMove() {
-    std::vector<Rat::Move> moves = { Rat::Move::RIGHT, Rat::Move::DOWN, Rat::Move::UP, Rat::Move::LEFT };
-
-    for (auto& move : moves) {
-        const auto& beforePos = _rat.getPosition();
-        _rat.move(move);
-        const auto& currentPos = _rat.getPosition();
-
-        if (!_labyrinth.isValid(currentPos) || _rat.beenThere(currentPos)) { //If we are not valid rewind, this is a Labyrinth pos check not movement
-            _rat.setPosition(beforePos);
-            continue;
+    Point<unsigned int> ratPos = _rat.getPosition();
+    //_rat.moveFoward(false);
+    de::Stack<Point<unsigned int> > movedPaths;
+    std::vector<Point<unsigned int> > visited; 
+    
+    movedPaths.insert(ratPos);
+    while (!_labyrinth.isExit(ratPos)){
+        ratPos = _rat.getLast();
+        visited.push_back(lastValue);
+        
+        if (!visited.elementExists(lastValue)){
+            if (_labyrinth.checkRight(ratPos)){
+                movedPaths.insert(ratPos); // todo, test this shit.
+            }
+            else if (_labyrinth.checkLeft(ratPos)){
+                movedPaths.insert(ratPos); // todo, test this shit.
+            }
+            else if (_labyrinth.checkUp(ratPos)){
+                movedPaths.insert(ratPos); // todo, test this shit.
+            }
+            else if (_labyrinth.checkDown(ratPost)){
+                movedPaths.insert(ratPos); // todo, test this shit.
+            }
         }
-
-        _rat.moveFoward(_labyrinth.isCheese(currentPos));
-
-        if (_labyrinth.isWall(currentPos) || _labyrinth.isEntrance(currentPos)) { // If its a wall we cant move
-            _rat.moveBackwards();
+        else {
+            auto tmp = std::find(visited.begin(), visited.end(), ratPos);
+            if (tmp != visited.end()){
+                visited.erase(tmp);                
+            }
+            movedPaths.remove();
         }
-        if (_labyrinth.isPath(currentPos) || _labyrinth.isExit(currentPos)) { // Found our path just exit it
-            break;
-        }
-    }
+    }    
 }
 
 void GameController::report() {

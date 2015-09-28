@@ -42,6 +42,11 @@ public:
 
     bool beenThere(const Point<unsigned int>& p);
 
+    // todo, move from here
+    Point<unsigned int> getLast(){
+        return _moves.getTopElement().pos;
+    }
+    
     void report();
 private:
     void _moveFoward(const Point<unsigned int>& point, const bool& ateCheese);

@@ -42,3 +42,35 @@ Point<unsigned int> Labyrinth::getStart() const {
     return _start;
 }
 
+
+bool Labyrinth::checkRight(const Point<unsigned int> &point) const {
+    auto right = point + Point<unsigned int>(1, 0);
+
+    if (isWall(right)) return false;
+
+    return true;
+}
+bool Labyrinth::checkLeft(const Point<unsigned int> &point) const {
+    auto left = point + Point<unsigned int>(-1, 0);
+
+    if (isWall(left)) return false;
+
+    return true;
+}
+
+bool Labyrinth::checkUp(const Point<unsigned int> &point) const {
+    auto up = point + Point<unsigned int>(0, 1);
+
+    if (isWall(up)) return false;
+
+    return true;
+}
+
+bool Labyrinth::checkDown(const Point<unsigned int> &point) const {
+    auto down = point + Point<unsigned int>(0, -1);
+
+    if (isWall(down)) return false;
+
+    return true;
+}
+
