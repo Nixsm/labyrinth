@@ -17,7 +17,7 @@ public:
     };
 private:
     struct Movement {
-        Point<unsigned int> pos;
+        Point2U pos;
         bool ateCheese;
 
         bool operator==(const Movement& other) {
@@ -30,30 +30,27 @@ private:
 
 public:
     Rat() {}
-    Rat(const Point<unsigned int>& point);
+    Rat(const Point2U& point);
     
     void move(Move move);
 
-    void moveFoward(const bool& ateCheese);
+    void moveFoward(const Point2U& pos, const bool& ateCheese);
     void moveBackwards();
     
-    Point<unsigned int> getPosition() const;
-    void setPosition(const Point<unsigned int>& p);
+    Point2U getPosition() const;
+    void setPosition(const Point2U& p);
 
-    bool beenThere(const Point<unsigned int>& p);
-
-    // todo, move from here
-    Point<unsigned int> getLast(){
+    inline Point2U getLast(){
         return _moves.getTopElement().pos;
     }
     
     void report();
 private:
-    void _moveFoward(const Point<unsigned int>& point, const bool& ateCheese);
+    void _moveFoward(const Point2U& point, const bool& ateCheese);
     void _rewindMove();
     
 private:
-    Point<unsigned int> _pos;
+    Point2U _pos;
     unsigned int _cheese;
     unsigned int _totalMoves;
     de::Stack<Movement> _moves;

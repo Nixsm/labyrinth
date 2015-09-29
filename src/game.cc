@@ -11,9 +11,7 @@ Game::Game() {
 }
 
 void Game::start() {
-    do {
-        _gc->ratMove();
-    } while (!_gc->isExit());
+    _gc->ratMove();
 
     _gc->report();
     std::cout << "The end" << std::endl;

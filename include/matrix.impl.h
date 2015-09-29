@@ -16,7 +16,7 @@ template<typename T> bool Matrix<T>::valid( const unsigned int &x, const unsigne
     return false;
 }
 
-template<typename T> bool Matrix<T>::valid( const Point<unsigned int> &p ) const {
+template<typename T> bool Matrix<T>::valid( const Point2U &p ) const {
     if ((p.getX() >= 0 && p.getX() < _rows) && (p.getY() >= 0 && p.getY() < _cols))
         return true;
 
@@ -32,11 +32,11 @@ template<typename T> void Matrix<T>::set( const unsigned int &x, const unsigned 
 }
 
 
-template<typename T> T Matrix<T>::get(const Point<unsigned int>& point) const {
+template<typename T> T Matrix<T>::get(const Point2U& point) const {
     return _data.at(_get2DIdx(point.getX(), point.getY()));
 }
 
-template<typename T> void Matrix<T>::set(const Point<unsigned int>& point, const T &value ) {
+template<typename T> void Matrix<T>::set(const Point2U& point, const T &value ) {
     _data.at(_get2DIdx(point.getX(), point.getY())) = value;
 }
 

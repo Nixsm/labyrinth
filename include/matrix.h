@@ -12,13 +12,13 @@ public:
     Matrix(const unsigned int& rows, const unsigned int& cols);
     
     void set(const unsigned int& x, const unsigned int& y, const T& value);
-    void set(const Point<unsigned int>& point, const T& value);
+    void set(const Point2U& point, const T& value);
     
     T get(const unsigned int& x, const unsigned int& y) const;
-    T get(const Point<unsigned int>& point) const;
+    T get(const Point2U& point) const;
 
     bool valid(const unsigned int& x, const unsigned int& y) const;
-    bool valid(const Point<unsigned int>& p) const;
+    bool valid(const Point2U& p) const;
     
     friend std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix) {
         for (int i = 0; i < matrix._rows; ++i) {

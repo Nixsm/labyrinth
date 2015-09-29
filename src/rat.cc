@@ -1,17 +1,17 @@
 #include "rat.h"
 #include <vector>
 
-Rat::Rat(const Point<unsigned int>& point)
+Rat::Rat(const Point2U& point)
     :_pos(point), _cheese(0u), _totalMoves(0u) 
 {
 
 }
 
-Point<unsigned int> Rat::getPosition() const {
+Point2U Rat::getPosition() const {
     return _pos;
 }
 
-void Rat::setPosition(const Point<unsigned int>& p) {
+void Rat::setPosition(const Point2U& p) {
     _pos = p;
 }
 
@@ -32,15 +32,15 @@ void Rat::move(Move move) {
     }
 }
 
-void Rat::moveFoward(const bool& ateCheese) {
-    _moveFoward(_pos, ateCheese);
+void Rat::moveFoward(const Point2U& pos, const bool& ateCheese) {
+    _moveFoward(pos, ateCheese);
 }
 
 void Rat::moveBackwards() {
     _rewindMove();
 }
 
-void Rat::_moveFoward(const Point<unsigned int>& point, const bool& ateCheese) {
+void Rat::_moveFoward(const Point2U& point, const bool& ateCheese) {
     Movement move;
 
     move.pos = point;
@@ -65,32 +65,21 @@ void Rat::_rewindMove() {
     }
 }
 
-bool Rat::beenThere(const Point<unsigned int>& p) {
-    Movement move;
-    move.pos = p;
-    
-    if (_moves.elementExists(move)) {
-        return true;
-    }
-
-    return false;
-}
-
 void Rat::report() {
 
-    std::cout << "Total moves: " << _totalMoves << std::endl;
+    std::cout << "Total moves: " << _totalMoves - 1 << std::endl; // Minus one for entry move
 
     std::cout << "Moves until exit: " << _moves.size() << std::endl;
 
     // HACK
-    std::vector<Point<unsigned int> > points; //Workaround to invert
+    std::vector<Point2U > points; //Workaround to invert
     
     while (!_moves.isEmpty()) {
         const auto& topElement = _moves.getTopElement();
 
         
 
-        points.push_back(topElement.pos + Point<unsigned int>(1, 1));
+        points.push_back(topElement.pos + Point2U(1, 1));
         _moves.remove();
     }
 

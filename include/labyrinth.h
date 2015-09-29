@@ -14,21 +14,26 @@ public:
     Labyrinth() {}
     Labyrinth(const int& width, const int& height, const std::vector<std::string>& map);
 
-    bool isValid(const Point<unsigned int>& point) const;
-    bool isCheese(const Point<unsigned int>& point) const;
-    bool isEntrance(const Point<unsigned int>& point) const;
-    bool isExit(const Point<unsigned int>& point) const;
-    bool isWall(const Point<unsigned int>& point) const;
-    bool isPath(const Point<unsigned int>& point) const;
-    bool checkRight(const Point<unsigned int> &point) const;
-    bool checkLeft(const Point<unsigned int> &point) const;
-    bool checkUp(const Point<unsigned int> &point) const;
-    bool checkDown(const Point<unsigned int> &point) const;
+    bool isValid(const Point2U& point) const;
+    bool isCheese(const Point2U& point) const;
+    bool isEntrance(const Point2U& point) const;
+    bool isExit(const Point2U& point) const;
+    bool isWall(const Point2U& point) const;
+    bool isPath(const Point2U& point) const;
+    bool checkRight(const Point2U &point) const;
+    bool checkLeft(const Point2U &point) const;
+    bool checkUp(const Point2U &point) const;
+    bool checkDown(const Point2U &point) const;
+
+    bool getNeighbor(const Point2U& point, Point2U& neighbor) const;
     
-    Point<unsigned int> getStart() const;
+    void setVisited(const Point2U& point);
+    bool visited(const Point2U& point) const;
+    Point2U getStart() const;
 private:
     Matrix<char> _data;
-    Point<unsigned int> _start;
+    Matrix<bool> _visited;
+    Point2U _start;
 };
 
 

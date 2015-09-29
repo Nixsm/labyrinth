@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+
 template<typename T> class Point {
 public:
     Point() { }
@@ -42,5 +43,7 @@ private:
     T _x;
     T _y;
 };
+
+typedef Point<unsigned int> Point2U;
 
 #endif//POINT_H
